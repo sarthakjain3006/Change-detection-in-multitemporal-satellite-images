@@ -118,7 +118,7 @@ print('[INFO] Performing PCA took {} seconds'.format(end-start))
 print('[INFO] Building Feature Vector Space ...')
 start = time.time()
 FVS = find_FVS(EVS, diff_image, mean_vec, new_size)
-components = 3
+components = 2
 end = time.time()
 print('[INFO] Building Feature Vector Space took {} seconds'.format(end-start))
 
@@ -138,7 +138,7 @@ cv2.imwrite(out_dir+'ChangeMap.jpg', change_map)
 print('[INFO] Performing Closing ...')
 print('[WARNING] Kernel is fixed depending on image topology')
 print('[WARNING] Closing with disk-shaped structuring element with radius equal to 6')
-kernel = skimage.morphology.disk(6)
+kernel = skimage.morphology.disk(3)
 CloseMap = cv2.morphologyEx(change_map, cv2.MORPH_CLOSE, kernel)
 cv2.imwrite(out_dir+'CloseMap.jpg', CloseMap)
 
